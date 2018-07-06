@@ -1,0 +1,20 @@
+.chat {
+    width: 50%;
+    height: 300px;
+    border: 1px solid grey;
+
+    overflow-y: scroll;
+
+    list-style: none;
+    padding: 0;
+    
+}
+
+.chat li * {
+    display: inline-block;
+    margin:0;
+}
+
+.chat li:nth-child(even) {
+    background-color: #DDD;
+}
