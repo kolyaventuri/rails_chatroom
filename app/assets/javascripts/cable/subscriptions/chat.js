@@ -1,13 +1,14 @@
-App.chatChannel = App.cable.subscriptions.create(
-  {
-    channel: "ChatChannel",
-    recieved: recieved
-  }
-);
-
-var recieved = function(data) {
+var postToScreen = function(data) {
   console.log(data);
 };
 
-App.chatChannel.send({ text: 'Hello World!', user: 'Me' });
+App.chatChannel = App.cable.subscriptions.create({
+  channel: "ChatChannel",
+  room: 'main'
+}, {
+  received: function(data) {
+    postToScreen(data);
+  }
+});
+
 
