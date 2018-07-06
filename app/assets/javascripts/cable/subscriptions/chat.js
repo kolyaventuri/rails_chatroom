@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var message = document.querySelector('#message');
   var name = document.querySelector('#name');
   var send = document.querySelector('#send');
+  var color = document.querySelector('#color');
 
   var postToScreen = function(data) {
     var li = document.createElement('li');
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var message = document.createElement('p');
 
     name.setAttribute('class', 'name');
+    name.style.color = data.color;
     name.innerText = data.name;
 
     message.innerText = data.message;
@@ -24,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var doSendMessage = function() {
     let _msg = message.value;
 
-    App.chatChannel.send({ message: _msg, name: name.value });
+    App.chatChannel.send({ message: _msg, name: name.value, color: color.value });
 
     message.value = "";
   };
