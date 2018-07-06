@@ -1,24 +1,15 @@
-# README
+# Rails ActionCable Chatroom
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple chatroom applicaiton that allows any user to connect and send messages.
 
-Things you may want to cover:
+Users can set a screenname, and a name color in addtion to sending messages.
 
-* Ruby version
+### Installing
+Simply clone down the repository and run `bundle` to get started. No database required!
 
-* System dependencies
+### Running
+The server can be run simply with `rails s`. In a production environment, you will need to set up a REDIS server to handle ActionCable message.
 
-* Configuration
+### Running Tests
+Tests can be run with `bundle exec rspec`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
