@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
   var chatBox = document.querySelector('.chat');
 
+  var message = document.querySelector('#message');
+  var name = document.querySelector('#name');
+  var send = document.querySelector('#send');
+
   var postToScreen = function(data) {
     var li = document.createElement('li');
     var name = document.createElement('p');
@@ -17,6 +21,14 @@ document.addEventListener('DOMContentLoaded', function() {
     chatBox.appendChild(li);
   };
 
+  var doSendMessage = function() {
+    let _msg = message.value;
+
+    App.chatChannel.send({ message: _msg, name: name.value });
+
+    message.value = "";
+  };
+
   App.chatChannel = App.cable.subscriptions.create({
     channel: "ChatChannel",
     room: 'main'
@@ -26,17 +38,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  var message = document.querySelector('#message');
-  var name = document.querySelector('#name');
-  var send = document.querySelector('#send');
-
   send.addEventListener('click', function(event) {
     event.preventDefault();
-
-    let _msg = message.value;
-
-    App.chatChannel.send({ message: _msg, name: name.value });
-
-    message.value = "";
+    doSendMessage();
   });
+
+  message.addEventListener('keydown', function(e) {
+    if(e.keyCode === 13) {
+      doSendMessage();
+    }
+  })
 });
