@@ -4,7 +4,7 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    data["color"] = "#000000" unless code ~= regex
+    data["color"] = "#000000" unless data["color"] =~ regex
     data["name"] = "Default Name" if data["name"].length < 1
     ActionCable.server.broadcast("chat_#{params[:room]}", data)
   end
