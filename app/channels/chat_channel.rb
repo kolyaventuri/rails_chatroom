@@ -1,5 +1,5 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribe
-    binding.pry
+    stream_for "chat"
   end
 end
