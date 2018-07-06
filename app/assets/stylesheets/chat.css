@@ -1,3 +1,7 @@
+body {
+    font-family: Arial;
+}
+
 .chat {
     width: 50%;
     height: 300px;
@@ -7,7 +11,11 @@
 
     list-style: none;
     padding: 0;
-    
+}
+
+
+.chat li {
+    padding: 0 0.5em;
 }
 
 .chat li * {
@@ -17,4 +25,9 @@
 
 .chat li:nth-child(even) {
     background-color: #DDD;
+}
+
+.chat li .name {
+    font-weight: bold;
+    padding-right: 1em;
 }
