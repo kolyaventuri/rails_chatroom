@@ -26,3 +26,8 @@ body {
 .chat li:nth-child(even) {
     background-color: #DDD;
 }
+
+.chat li .name {
+    font-weight: bold;
+    padding-right: 1em;
+}

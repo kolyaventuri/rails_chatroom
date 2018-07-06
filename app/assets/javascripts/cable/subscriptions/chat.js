@@ -3,8 +3,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var postToScreen = function(data) {
     var li = document.createElement('li');
+    var name = document.createElement('p');
+    var message = document.createElement('p');
 
-    li.innerText = data.message;
+    name.setAttribute('class', 'name');
+    name.innerText = data.name;
+
+    message.innerText = data.message;
+
+    li.appendChild(name);
+    li.appendChild(message);
 
     chatBox.appendChild(li);
   };
@@ -17,8 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
       postToScreen(data);
     }
   });
-  
+
   var message = document.querySelector('#message');
+  var name = document.querySelector('#name');
   var send = document.querySelector('#send');
 
   send.addEventListener('click', function(event) {
@@ -26,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let _msg = message.value;
 
-    App.chatChannel.send({ message: _msg });
+    App.chatChannel.send({ message: _msg, name: name.value });
 
     message.value = "";
   });
